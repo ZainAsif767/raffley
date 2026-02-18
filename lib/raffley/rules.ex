@@ -3,11 +3,11 @@ defmodule Raffley.Rules do
     [
       %{
         id: 1,
-        text: "Participant must have a high tolerance for puns and dad jokes."
+        text: "Participant must have a high tolerance for puns and dad jokes 🥸."
       },
       %{
         id: 2,
-        text: "Participants must be able to laugh at themselves and others."
+        text: "Participants must be able to laugh at themselves and others 😂."
       },
       %{
         id: 3,
@@ -18,5 +18,13 @@ defmodule Raffley.Rules do
         text: "Have Fun! 🤩"
       }
     ]
+  end
+
+  def get_rule(id) when is_integer(id) do
+    Enum.find(list_rules(), fn r -> r.id == id end)
+  end
+
+  def get_rule(id) when is_binary(id) do
+    id |> String.to_integer() |> get_rule()
   end
 end
